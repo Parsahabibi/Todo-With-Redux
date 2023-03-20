@@ -15,12 +15,11 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-const HomeHeader = () => {
+const HomeHeader = ({ form, setForm , text , setText }) => {
+
 
     const emptyForm = { id: Math.floor(Math.random() * 1000), title: "" }
-    const [form, setForm] = useState(emptyForm)
     const [edit, setEdit] = useState(false)
-    const [text, setText] = useState(form);
 
 
     const data = useSelector(state => state.Todo)
@@ -133,7 +132,7 @@ const HomeHeader = () => {
                                     <Grid>
                                         <Typography variant='h5' color={'#ffffff'} >{item.title}</Typography>
                                     </Grid>
-                                    <Grid sx={{display:'flex'}} gap={5}>
+                                    <Grid sx={{ display: 'flex' }} gap={5}>
                                         <Button position={"fixed"} variant='outlined' color='error' onClick={() => handleDelete(item.id)}><DeleteIcon /></Button>
                                         <Button position={"fixed"} onClick={() => setEdit(true)} variant='outlined'><EditIcon /></Button>
                                     </Grid>

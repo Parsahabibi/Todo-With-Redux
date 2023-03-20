@@ -1,14 +1,18 @@
 import { Grid } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import HomeHeader from '../components/HomeHeader'
 
 const Home = () => {
+
+  const emptyForm = { id: Math.floor(Math.random() * 1000), title: "" }
+  const [form, setForm] = useState(emptyForm)
+  const [text, setText] = useState(form);
+
   return (
     <Grid>
-        <HomeHeader />
-        {/* <HomeContext/> */}
+      <HomeHeader form={form} setForm={setForm} text={text} setText={setText} />
     </Grid>
   )
 }
 
-export default Home
+export default React.memo(Home)
